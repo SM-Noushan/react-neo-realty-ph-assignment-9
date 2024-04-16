@@ -134,7 +134,7 @@ function NavListMenu() {
       >
         <MenuHandler>
           <Typography as="div" variant="small" className="font-medium">
-            <ListItem
+            <div
               className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900"
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
@@ -152,7 +152,7 @@ function NavListMenu() {
                   isMobileMenuOpen ? "rotate-180" : ""
                 }`}
               />
-            </ListItem>
+            </div>
           </Typography>
         </MenuHandler>
         <MenuList className="hidden max-w-screen-xl rounded-xl lg:block">
@@ -171,26 +171,30 @@ function NavListMenu() {
 function NavList() {
   return (
     <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1">
-      <Typography
-        as="a"
-        href="#"
-        variant="small"
-        color="blue-gray"
-        className="font-medium"
-      >
-        <ListItem className="flex items-center gap-2 py-2 pr-4">Home</ListItem>
+      <Typography variant="small" color="blue-gray" className="font-medium">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive
+              ? "flex items-center gap-2 py-2 pr-4 font-semibold"
+              : "flex items-center gap-2 py-2 pr-4"
+          }
+        >
+          Home
+        </NavLink>
       </Typography>
       <NavListMenu />
-      <Typography
-        as="a"
-        href="#"
-        variant="small"
-        color="blue-gray"
-        className="font-medium"
-      >
-        <ListItem className="flex items-center gap-2 py-2 pr-4">
+      <Typography variant="small" color="blue-gray" className="font-medium">
+        <NavLink
+          to="/contact-us"
+          className={({ isActive }) =>
+            isActive
+              ? "flex items-center gap-2 py-2 pr-4 font-semibold"
+              : "flex items-center gap-2 py-2 pr-4"
+          }
+        >
           Contact Us
-        </ListItem>
+        </NavLink>
       </Typography>
     </List>
   );
@@ -300,7 +304,7 @@ const NavBar = () => {
                 </Typography>
               </MenuItem>
               <MenuItem>
-                <Link>
+                <Link to="/login">
                   <Typography
                     variant="small"
                     color="blue-gray"
