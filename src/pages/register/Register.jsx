@@ -304,12 +304,12 @@ const Register = () => {
             color="gray"
             className="mt-4 text-center font-normal"
           >
-            Already registered?{" "}
+            Already have an account?{" "}
             <Link
               to="/login"
               className="font-medium text-gray-900 hover:underline"
             >
-              Login now
+              Login
             </Link>
           </Typography>
         </form>
