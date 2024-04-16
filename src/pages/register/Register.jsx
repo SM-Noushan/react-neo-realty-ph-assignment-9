@@ -3,8 +3,10 @@ import { Typography, Input, Button } from "@material-tailwind/react";
 import { EyeSlashIcon, EyeIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
+  const { createUserWithGoogle, createUserWithFacebook } = useAuth();
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => setPasswordShown((cur) => !cur);
   const {
@@ -29,8 +31,20 @@ const Register = () => {
     //     setCredentialError(true);
     //   });
   };
+  const handleSignUp = (provider) => {
+    provider()
+      .then(() => {
+        alert("sign up successful");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        console.log("errorCode :>> ", errorCode);
+        const errorMessage = error.message;
+        console.log("errorMessage :>> ", errorMessage);
+      });
+  };
   return (
-    <section className="grid text-center h-screen items-center p-8">
+    <section className="grid text-center items-center p-8">
       <div>
         <Typography variant="h3" color="blue-gray" className="mb-2">
           Register
@@ -263,6 +277,7 @@ const Register = () => {
             Register
           </Button>
           <Button
+            onClick={() => handleSignUp(createUserWithGoogle)}
             variant="outlined"
             size="lg"
             className="mt-6 flex h-12 items-center justify-center gap-2"
@@ -287,6 +302,7 @@ const Register = () => {
             <hr className="my-3 h-0.5 w-1/2 bg-gray-900" />
           </div>
           <Button
+            onClick={() => handleSignUp(createUserWithFacebook)}
             variant="outlined"
             size="lg"
             className="flex h-12 items-center justify-center gap-2"
