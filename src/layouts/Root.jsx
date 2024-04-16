@@ -1,10 +1,12 @@
-import { Button } from "@material-tailwind/react";
+import { Outlet } from "react-router-dom";
+import NavBar from "../components/NavBar";
 
 const Root = () => {
   return (
-    <div>
-      <Button>Test</Button>;
-    </div>
+    <>
+      <NavBar />
+      <Outlet />
+    </>
   );
 };
 
