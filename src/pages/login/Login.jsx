@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 const Login = () => {
+  const [credentialError, setCredentialError] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => setPasswordShown((cur) => !cur);
   const {
@@ -37,7 +38,7 @@ const Login = () => {
           Log In
         </Typography>
         <Typography className="mb-16 text-gray-600 font-normal text-[18px]">
-          Enter your email and password to sign in
+          Enter your email and password to login
         </Typography>
         <form className="mx-auto max-w-[24rem] text-left">
           <div className="mb-6">
@@ -119,13 +120,8 @@ const Login = () => {
             className="mt-6"
             fullWidth
           >
-            Log in
+            Login
           </Button>
-          {/* {credentialError && (
-            <p className="text-hotRed font-semibold">*Invalid Credentials</p>
-          )} */}
-          {/* {(errors?.emailAddress?.message || errors?.password?.message) &&
-            !credentialError && ( */}
           {Object.entries(errors).length > 0 && (
             <Typography
               variant="small"
@@ -144,7 +140,10 @@ const Login = () => {
                   clipRule="evenodd"
                 />
               </svg>
-              Email and Password Required Invalid Credentials
+              {((errors?.emailAddress?.message || errors?.password?.message) &&
+                !credentialError &&
+                "Email and Password Required") ||
+                (credentialError && "Invalid Credentials")}
             </Typography>
           )}
           {/* <div className="mt-4 flex justify-end">
@@ -170,6 +169,30 @@ const Login = () => {
               className="h-6 w-6"
             />{" "}
             sign in with google
+          </Button>
+          <div className="flex gap-2 items-center px-2">
+            <hr className="my-3 h-0.5 w-1/2 bg-gray-900" />
+            <Typography
+              variant="small"
+              color="gray"
+              className="text-center font-semibold"
+            >
+              Or
+            </Typography>
+            <hr className="my-3 h-0.5 w-1/2 bg-gray-900" />
+          </div>
+          <Button
+            variant="outlined"
+            size="lg"
+            className="flex h-12 items-center justify-center gap-2"
+            fullWidth
+          >
+            <img
+              src={`https://www.material-tailwind.com/logos/logo-facebook.png`}
+              alt="facebook"
+              className="h-6 w-6"
+            />{" "}
+            sign in with facebook
           </Button>
           <Typography
             variant="small"
