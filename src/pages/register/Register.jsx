@@ -1,12 +1,26 @@
 import { useState } from "react";
 import { Typography, Input, Button } from "@material-tailwind/react";
 import { EyeSlashIcon, EyeIcon } from "@heroicons/react/24/solid";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 
+const catchError = (error) => {
+  const errorCode = error.code;
+  if (errorCode == "auth/email-already-in-use")
+    return alert("Account already exist!");
+  return console.log(
+    "errorMessage :>> Something unexpected happened. Please try again."
+  );
+};
+
 const Register = () => {
-  const { createUserWithGoogle, createUserWithFacebook } = useAuth();
+  const {
+    createUser,
+    createUserWithGoogle,
+    createUserWithFacebook,
+    updateProfileInfo,
+  } = useAuth();
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => setPasswordShown((cur) => !cur);
   const {
@@ -15,32 +29,34 @@ const Register = () => {
     reset,
     formState: { errors },
   } = useForm();
-  console.log(errors);
+  const navigate = useNavigate();
   const onSubmit = (data) => {
     const { name, email, photoURL, password } = data;
-    if (!errors.length) {
-      reset();
-    }
-    console.log(data);
-    // logIn(emailAddress, password)
-    //   .then(() => {
-    //     setCredentialError(false);
-    //     navigate(location?.state ? location.state : "/");
-    //   })
-    //   .catch(() => {
-    //     setCredentialError(true);
-    //   });
+    createUser(email, password)
+      .then(() => {
+        reset();
+        alert("Signed up");
+        updateProfileInfo(name, photoURL)
+          .then(() => {
+            alert("Profile info updated");
+            return navigate("/");
+          })
+          .catch(() => {
+            console.log("Profile couldn't be updated. Please try again.");
+          });
+      })
+      .catch((error) => {
+        catchError(error);
+      });
   };
   const handleSignUp = (provider) => {
     provider()
       .then(() => {
         alert("sign up successful");
+        return navigate("/");
       })
       .catch((error) => {
-        const errorCode = error.code;
-        console.log("errorCode :>> ", errorCode);
-        const errorMessage = error.message;
-        console.log("errorMessage :>> ", errorMessage);
+        catchError(error);
       });
   };
   return (
@@ -173,7 +189,7 @@ const Register = () => {
               {...register("photoURL", {
                 required: true,
                 pattern:
-                  /^(http|https):\/\/[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}(\/[a-zA-Z0-9.-=?_+]*)*$/,
+                  /^(http|https):\/\/[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}(\/[a-zA-Z0-9.\-=&?_+]*)*$/i,
               })}
             />
 
@@ -288,7 +304,7 @@ const Register = () => {
               alt="google"
               className="h-6 w-6"
             />{" "}
-            sign up with google
+            register with google
           </Button>
           <div className="flex gap-2 items-center px-2">
             <hr className="my-3 h-0.5 w-1/2 bg-gray-900" />
@@ -313,7 +329,7 @@ const Register = () => {
               alt="facebook"
               className="h-6 w-6"
             />{" "}
-            sign up with facebook
+            register with facebook
           </Button>
           <Typography
             variant="small"

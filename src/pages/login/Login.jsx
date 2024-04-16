@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Typography, Input, Button } from "@material-tailwind/react";
 import { EyeSlashIcon, EyeIcon } from "@heroicons/react/24/solid";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
-  const { createUserWithGoogle, createUserWithFacebook } = useAuth();
+  const { createUserWithGoogle, createUserWithFacebook, logIn } = useAuth();
   const [credentialError, setCredentialError] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => setPasswordShown((cur) => !cur);
@@ -16,26 +16,26 @@ const Login = () => {
     reset,
     formState: { errors },
   } = useForm();
-  console.log(errors);
+  const location = useLocation();
+  const navigate = useNavigate();
   const onSubmit = (data) => {
-    const { emailAddress, password } = data;
-    if (!errors.length) {
-      reset();
-    }
-    console.log(data);
-    // logIn(emailAddress, password)
-    //   .then(() => {
-    //     setCredentialError(false);
-    //     navigate(location?.state ? location.state : "/");
-    //   })
-    //   .catch(() => {
-    //     setCredentialError(true);
-    //   });
+    const { email, password } = data;
+    logIn(email, password)
+      .then(() => {
+        reset();
+        setCredentialError(false);
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch(() => {
+        setCredentialError(true);
+      });
   };
   const handleSignUp = (provider) => {
     provider()
       .then(() => {
         alert("sign up successful");
+        setCredentialError(false);
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -135,7 +135,7 @@ const Login = () => {
           >
             Login
           </Button>
-          {Object.entries(errors).length > 0 && (
+          {(Object.entries(errors).length > 0 || credentialError) && (
             <Typography
               variant="small"
               color="gray"
@@ -182,7 +182,7 @@ const Login = () => {
               alt="google"
               className="h-6 w-6"
             />{" "}
-            sign in with google
+            login with google
           </Button>
           <div className="flex gap-2 items-center px-2">
             <hr className="my-3 h-0.5 w-1/2 bg-gray-900" />
@@ -207,7 +207,7 @@ const Login = () => {
               alt="facebook"
               className="h-6 w-6"
             />{" "}
-            sign in with facebook
+            login with facebook
           </Button>
           <Typography
             variant="small"

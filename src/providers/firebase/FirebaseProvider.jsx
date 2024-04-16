@@ -21,11 +21,12 @@ const FirebaseProvider = ({ children }) => {
   const [authLoading, setAuthLoading] = useState(true);
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log(currentUser);
       setUser(currentUser);
       setAuthLoading(false);
     });
     return () => unSubscribe();
-  }, [user]);
+  }, []);
   const createUserWithGoogle = () => {
     setAuthLoading(true);
     return signInWithPopup(auth, googleProvider);
@@ -48,7 +49,7 @@ const FirebaseProvider = ({ children }) => {
   };
   const updateProfileInfo = (name, url) => {
     setAuthLoading(true);
-    updateProfile(auth.currentUser, {
+    return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: url,
     });
