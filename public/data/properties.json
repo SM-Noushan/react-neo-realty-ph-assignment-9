@@ -1,0 +1,95 @@
+[
+  {
+    "image": "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "estate_title": "Family Home in Gulshan",
+    "id": "R001",
+    "segment_name": "Single-family homes",
+    "description": "Spacious single-family home located in the prestigious Gulshan neighborhood. Featuring four bedrooms, a lush garden, and ample parking space.",
+    "price": "BDT 2,50,00,000",
+    "status": "sale",
+    "area": "3,000 sqft",
+    "location": "Gulshan, Dhaka",
+    "facilities": ["4 Bedrooms", "3 Bathrooms", "Lush Garden", "Parking Space"]
+  },
+  {
+    "image": "https://plus.unsplash.com/premium_photo-1677645995536-7951e0e5035f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "estate_title": "Modern Townhouse in Banani",
+    "id": "R002",
+    "segment_name": "Townhouses",
+    "description": "Contemporary townhouse with sleek design elements and a rooftop terrace in Banani. Perfect for urban living with easy access to amenities.",
+    "price": "BDT 5,00,00,000",
+    "status": "sale",
+    "area": "2,800 sqft",
+    "location": "Banani, Dhaka",
+    "facilities": [
+      "3 Bedrooms",
+      "3.5 Bathrooms",
+      "Rooftop Terrace",
+      "Modern Kitchen"
+    ]
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1515263487990-61b07816b324?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "estate_title": "Luxury Apartment in Dhanmondi",
+    "id": "R003",
+    "segment_name": "Apartments",
+    "description": "Luxurious apartment offering panoramic views of Dhanmondi Lake. Features include high-end finishes, premium amenities, and 24/7 security.",
+    "price": "BDT 50,000/Month",
+    "status": "rent",
+    "area": "1,500 sqft",
+    "location": "Dhanmondi, Dhaka",
+    "facilities": [
+      "3 Bedrooms",
+      "3 Bathrooms",
+      "Swimming Pool",
+      "Gym",
+      "24/7 Security"
+    ]
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "estate_title": "Student Housing Near BUET",
+    "id": "R004",
+    "segment_name": "Student Housing",
+    "description": "Convenient student housing complex located near BUET. Furnished units with study areas, communal spaces, and easy access to campus.",
+    "price": "BDT 15,000/Month",
+    "status": "rent",
+    "area": "800 sqft",
+    "location": "Mirpur, Dhaka",
+    "facilities": [
+      "Fully Furnished",
+      "Study Areas",
+      "Communal Spaces",
+      "Security"
+    ]
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "estate_title": "Cozy Apartment in Uttara",
+    "id": "R005",
+    "segment_name": "Apartments",
+    "description": "Comfortable apartment located in Uttara with easy access to shopping centers and transportation. Ideal for small families or professionals.",
+    "price": "BDT 30,000/Month",
+    "status": "rent",
+    "area": "1,200 sqft",
+    "location": "Uttara, Dhaka",
+    "facilities": ["2 Bedrooms", "2 Bathrooms", "Balcony", "Parking Space"]
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1533430103396-276fea7cc3dc?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "estate_title": "Vacation Home in Cox's Bazar",
+    "id": "R006",
+    "segment_name": "Vacation Rentals",
+    "description": "Scenic vacation home overlooking the beach in Cox's Bazar. Enjoy a relaxing retreat with family and friends in this picturesque location.",
+    "price": "BDT 10,000/Night",
+    "status": "rent",
+    "area": "1,000 sqft",
+    "location": "Cox's Bazar, Chittagong",
+    "facilities": [
+      "2 Bedrooms",
+      "1 Bathroom",
+      "Beachfront View",
+      "Outdoor Seating"
+    ]
+  }
+]
