@@ -34,7 +34,8 @@ const Login = () => {
         reset();
         setCredentialError(false);
         toast.success("Login successful");
-        navigate(location?.state ? location.state : "/profile");
+        if (location.state) console.log(location?.state);
+        navigate(location.state ? location.state : "/profile");
       })
       .catch(() => {
         setAuthLoading(false);
@@ -82,7 +83,7 @@ const Login = () => {
               type="email"
               name="email"
               placeholder="name@mail.com"
-              className="w-full placeholder:opacity-100 focus:border-t-gray-900 border-t-blue-gray-200"
+              className="w-full placeholder:opacity-100 focus:!border-t-gray-900 border-t-blue-gray-200"
               labelProps={{
                 className: "hidden",
               }}
@@ -114,7 +115,7 @@ const Login = () => {
               labelProps={{
                 className: "hidden",
               }}
-              className="w-full placeholder:opacity-100 focus:border-t-gray-900 border-t-blue-gray-200"
+              className="w-full placeholder:opacity-100 focus:!border-t-gray-900 border-t-blue-gray-200"
               type={passwordShown ? "text" : "password"}
               icon={
                 <i onClick={togglePasswordVisiblity}>

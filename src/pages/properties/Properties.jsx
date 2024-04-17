@@ -13,7 +13,7 @@ const Properties = ({ item = 6 }) => {
       {dataLoading ? (
         <Spinner />
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 text-start">
           {data.slice(0, item).map((property) => (
             <PropertiesCard key={property.id} property={property} />
           ))}

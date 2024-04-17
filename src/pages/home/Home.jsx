@@ -1,4 +1,3 @@
-import { Button, Typography } from "@material-tailwind/react";
 import BannerHome from "../../components/BannerHome";
 import Properties from "../properties/Properties";
 

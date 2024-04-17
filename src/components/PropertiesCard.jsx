@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 const PropertiesCard = ({ property }) => {
   const { id, image, estate_title, description, segment_name } = property;
   return (
-    <Card className="max-w-[24rem] overflow-hidden">
+    <Card className="max-w-[24rem] overflow-hidden mx-auto">
       <CardHeader
         floated={false}
         shadow={false}

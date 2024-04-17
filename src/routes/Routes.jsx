@@ -8,6 +8,7 @@ import ProtectedRoutes from "./ProtectedRoutes";
 import Profile from "../pages/profile/Profile";
 import Contact from "../pages/contact/Contact";
 import Properties from "../pages/properties/Properties";
+import PropertyDetails from "../pages/properties/PropertyDetails";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,15 @@ export const router = createBrowserRouter([
       {
         path: "/properties",
         element: <Properties />,
+      },
+      {
+        path: "/property-details/:id",
+        element: (
+          <ProtectedRoutes>
+            <PropertyDetails />
+          </ProtectedRoutes>
+        ),
+        loader: () => fetch("/data/properties.json"),
       },
       {
         path: "/contact-us",
