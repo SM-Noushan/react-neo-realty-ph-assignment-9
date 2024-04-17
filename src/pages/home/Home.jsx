@@ -1,4 +1,5 @@
 import BannerHome from "../../components/BannerHome";
+import StatsCard from "../../components/StatsCard";
 import Properties from "../properties/Properties";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
     <div>
       <BannerHome />
       <Properties title="Neo Realty" item={3} />
+      <StatsCard />
     </div>
   );
 };

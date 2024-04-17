@@ -4,6 +4,7 @@ import { IconButton, Tooltip, Typography } from "@material-tailwind/react";
 import { deleteData, getData, saveData } from "../../utils/localStorage";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 function CheckIcon() {
   return (
@@ -59,6 +60,9 @@ const PropertyDetails = () => {
   if (navigation.state === "loading") return <Spinner />;
   return (
     <section className="p-8">
+      <Helmet>
+        <title>Property Details</title>
+      </Helmet>
       <div className="mx-auto max-w-screen-md relative">
         <img
           src={image}

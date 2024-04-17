@@ -2,15 +2,15 @@ import { Button, Typography, Input } from "@material-tailwind/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/bundle";
-import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
 
 const BannerHome = () => {
-  const swiperCSS = "flex justify-center *:w-2/3 *:rounded-lg h-[480px]";
+  const swiperCSS =
+    "flex justify-center *:object-cover *:w-2/3 *:rounded-lg h-[620px] md:h-[480px]";
   return (
     <>
-      <header className="bg-white my-12 relative h-[480px]">
+      <header className="bg-white md:mb-12  relative h-[650px] md:h-[480px]">
         <div className="grid mt-16 w-full place-items-stretch">
           <div className="container mx-auto py-16 px-12 text-center z-10">
             <Typography className="inline-flex text-sm rounded-lg border-[1.5px] border-blue-gray-50 bg-white py-1 lg:px-4 px-1 font-medium text-primary">
@@ -19,7 +19,7 @@ const BannerHome = () => {
             <Typography
               variant="h6"
               color="blue-gray"
-              className="mx-auto my-6 w-full leading-snug  !text-lg lg:max-w-3xl lg:!text-2xl"
+              className="mx-auto my-6 w-full leading-snug !text-base lg:max-w-3xl lg:!text-2xl"
             >
               Welcome to our state-of-the-art real estate platform! As the
               digital landscape evolves, we are committed to{" "}
@@ -38,7 +38,12 @@ const BannerHome = () => {
             </Typography>
             <div className="mt-8 grid w-full place-items-start md:justify-center">
               <div className="mb-2 flex w-full flex-col gap-4 md:flex-row">
-                <Input color="gray" label="Enter your email" size="lg" />
+                <Input
+                  color="gray"
+                  className="bg-white"
+                  label="Enter your email"
+                  size="lg"
+                />
                 <Button color="gray" className="w-full px-4 md:w-[12rem]">
                   subscribe
                 </Button>
@@ -48,7 +53,6 @@ const BannerHome = () => {
           <div className="absolute inset-0 opacity-30">
             <Swiper
               loop={true}
-              effect={"coverflow"}
               pagination={true}
               autoplay={{ delay: 2000 }}
               modules={[Pagination, Autoplay]}

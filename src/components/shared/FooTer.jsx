@@ -1,5 +1,5 @@
 import { Typography } from "@material-tailwind/react";
-const links = ["Company", "About Us", "Team", "Products", "Blog", "Pricing"];
+const links = ["Company", "About Us", "Team", "Properties", "Blog", "Pricing"];
 const currentYear = new Date().getFullYear();
 
 const FooTer = () => {

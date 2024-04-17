@@ -16,15 +16,8 @@ const catchError = (error) => {
 };
 
 const Register = () => {
-  const {
-    user,
-    authLoading,
-    setAuthLoading,
-    createUser,
-    createUserWithGoogle,
-    createUserWithFacebook,
-    updateProfileInfo,
-  } = useAuth();
+  const { user, authLoading, setAuthLoading, createUser, updateProfileInfo } =
+    useAuth();
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => setPasswordShown((cur) => !cur);
   const {
@@ -49,17 +42,6 @@ const Register = () => {
             setAuthLoading(false);
             toast.warn("Failed to create profile, please try again.");
           });
-      })
-      .catch((error) => {
-        setAuthLoading(false);
-        catchError(error);
-      });
-  };
-  const handleSignUp = (provider) => {
-    provider()
-      .then(() => {
-        toast.success("Registered successfully.");
-        navigate("/profile");
       })
       .catch((error) => {
         setAuthLoading(false);
@@ -303,45 +285,6 @@ const Register = () => {
             fullWidth
           >
             Register
-          </Button>
-          <Button
-            onClick={() => handleSignUp(createUserWithGoogle)}
-            variant="outlined"
-            size="lg"
-            className="mt-6 flex h-12 items-center justify-center gap-2"
-            fullWidth
-          >
-            <img
-              src={`https://www.material-tailwind.com/logos/logo-google.png`}
-              alt="google"
-              className="h-6 w-6"
-            />{" "}
-            register with google
-          </Button>
-          <div className="flex gap-2 items-center px-2">
-            <hr className="my-3 h-0.5 w-1/2 bg-gray-900" />
-            <Typography
-              variant="small"
-              color="gray"
-              className="text-center font-semibold"
-            >
-              Or
-            </Typography>
-            <hr className="my-3 h-0.5 w-1/2 bg-gray-900" />
-          </div>
-          <Button
-            onClick={() => handleSignUp(createUserWithFacebook)}
-            variant="outlined"
-            size="lg"
-            className="flex h-12 items-center justify-center gap-2"
-            fullWidth
-          >
-            <img
-              src={`https://www.material-tailwind.com/logos/logo-facebook.png`}
-              alt="facebook"
-              className="h-6 w-6"
-            />{" "}
-            register with facebook
           </Button>
           <Typography
             variant="small"

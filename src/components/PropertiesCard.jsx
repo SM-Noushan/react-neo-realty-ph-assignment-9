@@ -30,9 +30,9 @@ const PropertiesCard = ({ property }) => {
           {description.slice(0, 50)} ...
         </Typography>
       </CardBody>
-      <CardFooter className="flex items-center justify-center">
+      <CardFooter className="flex items-center justify-center *:w-full">
         <Link to={`/property-details/${id}`.toLocaleLowerCase()}>
-          <Button variant="filled" ripple={true}>
+          <Button variant="filled" ripple={true} fullWidth>
             view details
           </Button>
         </Link>

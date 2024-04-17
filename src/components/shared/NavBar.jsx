@@ -371,16 +371,34 @@ const NavBar = () => {
         <NavList />
         <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
           {!authLoading && !user && (
-            <Button variant="outlined" size="sm" color="blue-gray" fullWidth>
-              Log In
-            </Button>
-          )}
-          {!authLoading && user && (
-            <Link to="/profile" className="w-full">
+            <Link to="/login" className="w-full">
               <Button variant="outlined" size="sm" color="blue-gray" fullWidth>
-                Profile
+                Log In
               </Button>
             </Link>
+          )}
+          {!authLoading && user && (
+            <>
+              <Link to="/profile" className="w-full">
+                <Button
+                  variant="outlined"
+                  size="sm"
+                  color="blue-gray"
+                  fullWidth
+                >
+                  Profile
+                </Button>
+              </Link>
+              <Button
+                onClick={handleLogout}
+                variant="outlined"
+                size="sm"
+                color="blue-gray"
+                fullWidth
+              >
+                Logout
+              </Button>
+            </>
           )}
         </div>
       </Collapse>

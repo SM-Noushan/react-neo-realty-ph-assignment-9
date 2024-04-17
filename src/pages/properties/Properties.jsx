@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet-async";
 const Properties = ({ item = 6, title = "Properties" }) => {
   const { data, dataLoading } = useData();
   return (
-    <section className="container mx-auto py-16 px-8 text-center space-y-6">
+    <section className="container mx-auto pb-16 px-8 text-center space-y-6">
       <Helmet>
         <title>{title}</title>
       </Helmet>
