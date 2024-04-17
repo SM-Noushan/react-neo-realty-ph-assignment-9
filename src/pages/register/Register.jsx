@@ -94,7 +94,7 @@ const Register = () => {
               type="text"
               name="name"
               placeholder="Enter your name"
-              className="w-full placeholder:opacity-100 focus:!border-t-gray-900 border-t-blue-gray-200"
+              className="w-full placeholder:opacity-100 focus:!border-t-gray-900 !border-t-blue-gray-200"
               labelProps={{
                 className: "hidden",
               }}
@@ -142,7 +142,7 @@ const Register = () => {
               type="email"
               name="email"
               placeholder="name@mail.com"
-              className="w-full placeholder:opacity-100 focus:!border-t-gray-900 border-t-blue-gray-200"
+              className="w-full placeholder:opacity-100 focus:!border-t-gray-900 !border-t-blue-gray-200"
               labelProps={{
                 className: "hidden",
               }}
@@ -190,7 +190,7 @@ const Register = () => {
               type="text"
               name="photoUrl"
               placeholder="Enter photo url"
-              className="w-full placeholder:opacity-100 focus:!border-t-gray-900 border-t-blue-gray-200"
+              className="w-full placeholder:opacity-100 focus:!border-t-gray-900 !border-t-blue-gray-200"
               labelProps={{
                 className: "hidden",
               }}
@@ -239,7 +239,7 @@ const Register = () => {
               labelProps={{
                 className: "hidden",
               }}
-              className="w-full placeholder:opacity-100 focus:!border-t-gray-900 border-t-blue-gray-200"
+              className="w-full placeholder:opacity-100 focus:!border-t-gray-900 !border-t-blue-gray-200"
               type={passwordShown ? "text" : "password"}
               icon={
                 <i onClick={togglePasswordVisiblity}>

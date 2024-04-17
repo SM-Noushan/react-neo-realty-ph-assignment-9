@@ -1,6 +1,8 @@
 import { useLoaderData, useNavigation, useParams } from "react-router-dom";
 import Spinner from "../../components/shared/Spinner";
-import { Typography } from "@material-tailwind/react";
+import { IconButton, Tooltip, Typography } from "@material-tailwind/react";
+import { deleteData, getData, saveData } from "../../utils/localStorage";
+import { useEffect, useState } from "react";
 
 function CheckIcon() {
   return (
@@ -22,6 +24,7 @@ function CheckIcon() {
 }
 
 const PropertyDetails = () => {
+  const [bookmarkState, setBookmarkState] = useState(null);
   const navigation = useNavigation();
   const data = useLoaderData();
   const { id } = useParams();
@@ -37,6 +40,23 @@ const PropertyDetails = () => {
     location,
     facilities,
   } = property;
+  const bookmarkData = getData();
+  useEffect(() => {
+    bookmarkData.find((data) =>
+      data.id.toLowerCase() == id.toLocaleLowerCase()
+        ? setBookmarkState(true)
+        : setBookmarkState(false)
+    );
+    console.log(bookmarkState);
+  }, [bookmarkData, bookmarkState, id]);
+  const handleBookmark = () => {
+    saveData(property);
+    setBookmarkState(true);
+  };
+  const handleRemove = () => {
+    deleteData(id);
+    setBookmarkState(false);
+  };
   if (navigation.state === "loading") return <Spinner />;
   return (
     <section className="p-8">
@@ -80,15 +100,51 @@ const PropertyDetails = () => {
           >
             Facilities
           </Typography>
-          <div>
-            {facilities.map((facility, key) => (
-              <div key={key} className="flex items-center gap-2">
-                <span className="rounded-full border border-white/20 bg-white/20 p-1">
-                  <CheckIcon />
-                </span>
-                <Typography className="font-normal">{facility}</Typography>
-              </div>
-            ))}
+          <div className="flex justify-between items-end">
+            <div>
+              {facilities.map((facility, key) => (
+                <div key={key} className="flex items-center gap-2">
+                  <span className="rounded-full border border-white/20 bg-white/20 p-1">
+                    <CheckIcon />
+                  </span>
+                  <Typography className="font-normal">{facility}</Typography>
+                </div>
+              ))}
+            </div>
+
+            {bookmarkState ? (
+              <Tooltip content="Remove">
+                <IconButton onClick={handleRemove}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="size-6"
+                  >
+                    <path d="M3.53 2.47a.75.75 0 0 0-1.06 1.06l18 18a.75.75 0 1 0 1.06-1.06l-18-18ZM20.25 5.507v11.561L5.853 2.671c.15-.043.306-.075.467-.094a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93ZM3.75 21V6.932l14.063 14.063L12 18.088l-7.165 3.583A.75.75 0 0 1 3.75 21Z" />
+                  </svg>
+                </IconButton>
+              </Tooltip>
+            ) : (
+              <Tooltip content="Bookmark">
+                <IconButton onClick={handleBookmark}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="size-6"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M6 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3H6Zm1.5 1.5a.75.75 0 0 0-.75.75V16.5a.75.75 0 0 0 1.085.67L12 15.089l4.165 2.083a.75.75 0 0 0 1.085-.671V5.25a.75.75 0 0 0-.75-.75h-9Z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </IconButton>
+              </Tooltip>
+            )}
+
+            {/* {bookmarkData.map(data=>data.id)} */}
           </div>
         </div>
       </div>

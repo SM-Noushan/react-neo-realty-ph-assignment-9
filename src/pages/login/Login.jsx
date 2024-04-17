@@ -22,16 +22,14 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm();
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
   const onSubmit = (data) => {
     const { email, password } = data;
     logIn(email, password)
       .then(() => {
-        reset();
         setCredentialError(false);
         toast.success("Login successful");
         if (location.state) console.log(location?.state);
@@ -55,7 +53,8 @@ const Login = () => {
       });
   };
   if (authLoading) return <Spinner />;
-  if (user) return <Navigate to="/" />;
+  if (user)
+    return <Navigate to={location.state ? location.state : "/profile"} />;
   return (
     <section className="grid text-center items-center p-8">
       <div>
@@ -83,7 +82,7 @@ const Login = () => {
               type="email"
               name="email"
               placeholder="name@mail.com"
-              className="w-full placeholder:opacity-100 focus:!border-t-gray-900 border-t-blue-gray-200"
+              className="w-full placeholder:opacity-100 focus:!border-t-gray-900 !border-t-blue-gray-200"
               labelProps={{
                 className: "hidden",
               }}
@@ -115,7 +114,7 @@ const Login = () => {
               labelProps={{
                 className: "hidden",
               }}
-              className="w-full placeholder:opacity-100 focus:!border-t-gray-900 border-t-blue-gray-200"
+              className="w-full placeholder:opacity-100 focus:!border-t-gray-900 !border-t-blue-gray-200"
               type={passwordShown ? "text" : "password"}
               icon={
                 <i onClick={togglePasswordVisiblity}>

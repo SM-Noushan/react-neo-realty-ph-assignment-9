@@ -26,7 +26,7 @@ import {
   SquaresPlusIcon,
   SunIcon,
   TagIcon,
-  UserGroupIcon,
+  BookmarkSquareIcon,
 } from "@heroicons/react/24/solid";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
@@ -41,10 +41,10 @@ const navListMenuItems = [
     to: "/properties",
   },
   {
-    title: "About Us",
+    title: "Bookmarks",
     description: "Meet and learn about our dedication",
-    icon: UserGroupIcon,
-    to: "",
+    icon: BookmarkSquareIcon,
+    to: "/bookmarks",
   },
   {
     title: "Blog",
@@ -70,24 +70,24 @@ const navListMenuItems = [
     icon: PhoneIcon,
     to: "/contact-us",
   },
-  {
-    title: "News",
-    description: "Read insightful articles, tips, and expert opinions.",
-    icon: NewspaperIcon,
-    to: "",
-  },
-  {
-    title: "Products",
-    description: "Find the perfect solution for your needs.",
-    icon: RectangleGroupIcon,
-    to: "",
-  },
-  {
-    title: "Special Offers",
-    description: "Explore limited-time deals and bundles",
-    icon: TagIcon,
-    to: "",
-  },
+  // {
+  //   title: "News",
+  //   description: "Read insightful articles, tips, and expert opinions.",
+  //   icon: NewspaperIcon,
+  //   to: "",
+  // },
+  // {
+  //   title: "Products",
+  //   description: "Find the perfect solution for your needs.",
+  //   icon: RectangleGroupIcon,
+  //   to: "",
+  // },
+  // {
+  //   title: "Special Offers",
+  //   description: "Explore limited-time deals and bundles",
+  //   icon: TagIcon,
+  //   to: "",
+  // },
 ];
 
 function NavListMenu() {
@@ -157,7 +157,7 @@ function NavListMenu() {
           </Typography>
         </MenuHandler>
         <MenuList className="hidden max-w-screen-xl rounded-xl lg:block">
-          <ul className="grid grid-cols-3 gap-y-2 outline-none outline-0">
+          <ul className="grid grid-cols-2 gap-y-2 outline-none outline-0">
             {renderItems}
           </ul>
         </MenuList>

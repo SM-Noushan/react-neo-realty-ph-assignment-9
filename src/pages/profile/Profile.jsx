@@ -22,7 +22,6 @@ const Profile = () => {
   } = useForm();
   const onSubmit = (data) => {
     const { name, photoURL } = data;
-    console.log(data);
     updateProfileInfo(name, photoURL)
       .then(() => {
         toast.success("Successfully updated");
@@ -100,7 +99,7 @@ const Profile = () => {
                 placeholder="Enter your name"
                 defaultValue={user?.displayName || ""}
                 disabled={!editProfile}
-                className="w-full placeholder:opacity-100 focus:border-t-gray-900 border-t-blue-gray-200"
+                className="w-full placeholder:opacity-100 focus:!border-t-gray-900 !border-t-blue-gray-200"
                 labelProps={{
                   className: "hidden",
                 }}
@@ -150,7 +149,7 @@ const Profile = () => {
                 placeholder="Enter photo url"
                 defaultValue={user?.photoURL || ""}
                 disabled={!editProfile}
-                className="w-full placeholder:opacity-100 focus:border-t-gray-900 border-t-blue-gray-200"
+                className="w-full placeholder:opacity-100 focus:!border-t-gray-900 !border-t-blue-gray-200"
                 labelProps={{
                   className: "hidden",
                 }}
