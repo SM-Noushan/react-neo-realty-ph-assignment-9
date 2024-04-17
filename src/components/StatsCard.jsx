@@ -47,20 +47,20 @@ const stats = [
 export function StatsCard() {
   return (
     <section className="mb-12 px-8 container mx-auto">
-      <div className="lg:mb-24 mb-10">
+      <div className="lg:mb-24">
         <Typography
           color="blue-gray"
           className="mb-4 !text-2xl font-bold lg:!text-4xl"
         >
-          Looking for a house?
+          Why choose us?
         </Typography>
         <Typography variant="lead" className="w-w-full !text-gray-500 max-w-xl">
           We&apos;re constantly trying to express ourselves and actualize our
           dreams. If you have the opportunity to explore
         </Typography>
       </div>
-      <div className="grid gap-10 lg:grid-cols-1 lg:gap-24 xl:grid-cols-2 items-center">
-        <Card className="bg-gray-100/50 py-24 text-center" shadow={false}>
+      <div className="grid gap-4 lg:grid-cols-1 lg:gap-24 xl:grid-cols-2 items-center">
+        <Card className="bg-gray-100/50 py-12 text-center" shadow={false}>
           <Typography
             variant="h1"
             className="!text-green-500 !leading-snug text-5xl"
@@ -85,7 +85,7 @@ export function StatsCard() {
           </Typography>
         </Card>
         <div>
-          <div className="grid lg:grid-cols-2 gap-10 gap-x-20">
+          <div className="grid lg:grid-cols-2 gap-10 gap-x-20 *:mx-auto">
             {stats.map((props, key) => (
               <StatsCardInfo key={key} {...props} />
             ))}
