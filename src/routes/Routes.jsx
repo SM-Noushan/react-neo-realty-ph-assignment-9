@@ -9,6 +9,7 @@ import Profile from "../pages/profile/Profile";
 import Contact from "../pages/contact/Contact";
 import Properties from "../pages/properties/Properties";
 import PropertyDetails from "../pages/properties/PropertyDetails";
+import Bookmark from "../pages/properties/Bookmark";
 
 export const router = createBrowserRouter([
   {
@@ -53,7 +54,7 @@ export const router = createBrowserRouter([
         path: "/bookmarks",
         element: (
           <ProtectedRoutes>
-            <PropertyDetails />
+            <Bookmark />
           </ProtectedRoutes>
         ),
       },

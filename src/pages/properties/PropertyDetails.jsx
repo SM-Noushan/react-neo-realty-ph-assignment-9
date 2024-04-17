@@ -42,13 +42,10 @@ const PropertyDetails = () => {
   } = property;
   const bookmarkData = getData();
   useEffect(() => {
-    bookmarkData.find((data) =>
-      data.id.toLowerCase() == id.toLocaleLowerCase()
-        ? setBookmarkState(true)
-        : setBookmarkState(false)
-    );
-    console.log(bookmarkState);
-  }, [bookmarkData, bookmarkState, id]);
+    const i = bookmarkData.find((d) => d.id.toLowerCase() == id.toLowerCase());
+    if (i) setBookmarkState(true);
+    else setBookmarkState(false);
+  }, []);
   const handleBookmark = () => {
     saveData(property);
     setBookmarkState(true);

@@ -50,19 +50,19 @@ const navListMenuItems = [
     title: "Blog",
     description: "Find the perfect solution for your needs.",
     icon: Bars4Icon,
-    to: "",
+    to: "/error",
   },
   {
     title: "Services",
     description: "Learn how we can help you achieve your goals.",
     icon: SunIcon,
-    to: "",
+    to: "/error",
   },
   {
     title: "Support",
     description: "Reach out to us for assistance or inquiries",
     icon: GlobeAmericasIcon,
-    to: "",
+    to: "/error",
   },
   {
     title: "Contact",
@@ -90,12 +90,19 @@ const navListMenuItems = [
   // },
 ];
 
-function NavListMenu() {
+function NavListMenu({ state = false }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  console.log(state);
   const renderItems = navListMenuItems.map(
     ({ icon, title, description, to }, key) => (
-      <NavLink to={to} key={key}>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "rounded text-white bg-gray-300" : "rounded"
+        }
+        to={to}
+        key={key}
+      >
         <MenuItem className="flex items-center gap-3 rounded-lg">
           <div className="flex items-center justify-center rounded-lg !bg-blue-gray-50 p-2 ">
             {" "}
@@ -123,7 +130,6 @@ function NavListMenu() {
       </NavLink>
     )
   );
-
   return (
     <React.Fragment>
       <Menu
@@ -136,7 +142,7 @@ function NavListMenu() {
         <MenuHandler>
           <Typography as="div" variant="small" className="font-medium">
             <div
-              className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900"
+              className="flex items-center gap-2 py-1.5 px-2.5 font-medium text-gray-900"
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
@@ -177,21 +183,21 @@ function NavList() {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "flex items-center gap-2 py-2 pr-4 font-semibold"
-              : "flex items-center gap-2 py-2 pr-4"
+              ? "flex items-center gap-2 py-1.5 px-3 rounded-md text-white bg-gray-900"
+              : "flex items-center gap-2 py-1.5 px-3 rounded-md"
           }
         >
           Home
         </NavLink>
       </Typography>
-      <NavListMenu />
+      <NavListMenu state={true} />
       <Typography variant="small" color="blue-gray" className="font-medium">
         <NavLink
           to="/contact-us"
           className={({ isActive }) =>
             isActive
-              ? "flex items-center gap-2 py-2 pr-4 font-semibold"
-              : "flex items-center gap-2 py-2 pr-4"
+              ? "flex items-center gap-2 py-1.5 px-3 rounded-md text-white bg-gray-900"
+              : "flex items-center gap-2 py-1.5 px-3 rounded-md"
           }
         >
           Contact Us
