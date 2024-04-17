@@ -34,7 +34,10 @@ export const router = createBrowserRouter([
           </ProtectedRoutes>
         ),
       },
-      
+      {
+        path: "/contact-us",
+        element: <Contact />,
+      },
     ],
   },
 ]);
