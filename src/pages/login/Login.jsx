@@ -33,7 +33,7 @@ const Login = () => {
         reset();
         setCredentialError(false);
         toast.success("Login successful");
-        navigate(location?.state ? location.state : "/");
+        navigate(location?.state ? location.state : "/profile");
       })
       .catch(() => {
         setAuthLoading(false);
@@ -46,7 +46,7 @@ const Login = () => {
       .then(() => {
         toast.success("Login successful");
         setCredentialError(false);
-        navigate(location?.state ? location.state : "/");
+        navigate(location?.state ? location.state : "/profile");
       })
       .catch(() => {
         toast.error("Something went wrong, please try again");

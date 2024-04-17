@@ -40,13 +40,12 @@ const Register = () => {
         toast.success("Registered successfully.");
         updateProfileInfo(name, photoURL)
           .then(() => {
-            user.displayName = name;
-            user.photoURL = photoURL;
-            navigate("/");
+            setAuthLoading(false);
+            navigate("/profile");
           })
           .catch(() => {
             setAuthLoading(false);
-            // toast.warn("Failed to create profile, please try again.");
+            toast.warn("Failed to create profile, please try again.");
           });
       })
       .catch((error) => {
@@ -58,7 +57,7 @@ const Register = () => {
     provider()
       .then(() => {
         toast.success("Registered successfully.");
-        navigate("/");
+        navigate("/profile");
       })
       .catch((error) => {
         setAuthLoading(false);
