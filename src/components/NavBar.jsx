@@ -31,6 +31,7 @@ import {
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import SkeletonNavProfile from "./skeleton/SkeletonNavProfile";
+import { toast } from "react-toastify";
 
 const navListMenuItems = [
   {
@@ -212,10 +213,10 @@ const NavBar = () => {
   const handleLogout = () => {
     logOut()
       .then(() => {
-        alert("logout successful");
+        toast.success("Logout successful");
       })
-      .catch((error) => {
-        alert(error);
+      .catch(() => {
+        toast.error("Something went wrong, please try again");
       });
   };
 
@@ -291,7 +292,10 @@ const NavBar = () => {
                     />
                   </svg>
 
-                  <Typography variant="small" className="font-medium capitalize">
+                  <Typography
+                    variant="small"
+                    className="font-medium capitalize"
+                  >
                     {user?.displayName || "My Profile"}
                   </Typography>
                 </MenuItem>

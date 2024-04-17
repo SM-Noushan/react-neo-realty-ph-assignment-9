@@ -58,6 +58,7 @@ const FirebaseProvider = ({ children }) => {
   const authInfo = {
     user,
     authLoading,
+    setAuthLoading,
     createUser,
     createUserWithGoogle,
     createUserWithFacebook,

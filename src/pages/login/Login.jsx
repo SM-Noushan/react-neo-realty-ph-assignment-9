@@ -1,12 +1,20 @@
 import { useState } from "react";
-import { Typography, Input, Button } from "@material-tailwind/react";
+import { Typography, Input, Button, Spinner } from "@material-tailwind/react";
 import { EyeSlashIcon, EyeIcon } from "@heroicons/react/24/solid";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Login = () => {
-  const { createUserWithGoogle, createUserWithFacebook, logIn } = useAuth();
+  const {
+    createUserWithGoogle,
+    createUserWithFacebook,
+    logIn,
+    user,
+    authLoading,
+    setAuthLoading,
+  } = useAuth();
   const [credentialError, setCredentialError] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => setPasswordShown((cur) => !cur);
@@ -24,26 +32,33 @@ const Login = () => {
       .then(() => {
         reset();
         setCredentialError(false);
+        toast.success("Login successful");
         navigate(location?.state ? location.state : "/");
       })
       .catch(() => {
+        setAuthLoading(false);
         setCredentialError(true);
+        // toast.error("Something went wrong, please try again");
       });
   };
   const handleSignUp = (provider) => {
     provider()
       .then(() => {
-        alert("sign up successful");
+        toast.success("Login successful");
         setCredentialError(false);
         navigate(location?.state ? location.state : "/");
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        console.log("errorCode :>> ", errorCode);
-        const errorMessage = error.message;
-        console.log("errorMessage :>> ", errorMessage);
+      .catch(() => {
+        toast.error("Something went wrong, please try again");
       });
   };
+  if (authLoading)
+    return (
+      <div className="flex min-h-[calc(100dvh-389px)] justify-center items-center">
+        <Spinner />
+      </div>
+    );
+  if (user) return <Navigate to="/" />;
   return (
     <section className="grid text-center items-center p-8">
       <div>

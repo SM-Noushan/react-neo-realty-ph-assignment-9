@@ -4,6 +4,7 @@ import Home from "../pages/home/Home";
 import Login from "../pages/login/Login";
 import Error from "../pages/error/Error";
 import Register from "../pages/register/Register";
+import ProtectedRoutes2 from "./ProtectedRoutes2";
 
 export const router = createBrowserRouter([
   {

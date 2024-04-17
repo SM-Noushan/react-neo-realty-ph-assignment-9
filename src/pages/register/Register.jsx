@@ -1,21 +1,23 @@
 import { useState } from "react";
-import { Typography, Input, Button } from "@material-tailwind/react";
+import { Typography, Input, Button, Spinner } from "@material-tailwind/react";
 import { EyeSlashIcon, EyeIcon } from "@heroicons/react/24/solid";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const catchError = (error) => {
   const errorCode = error.code;
   if (errorCode == "auth/email-already-in-use")
-    return alert("Account already exist!");
-  return console.log(
-    "errorMessage :>> Something unexpected happened. Please try again."
-  );
+    return toast.error("Account already exists.");
+  return toast.error("Something unexpected happened, please try again.");
 };
 
 const Register = () => {
   const {
+    user,
+    authLoading,
+    setAuthLoading,
     createUser,
     createUserWithGoogle,
     createUserWithFacebook,
@@ -35,30 +37,41 @@ const Register = () => {
     createUser(email, password)
       .then(() => {
         reset();
-        alert("Signed up");
+        toast.success("Registered successfully.");
         updateProfileInfo(name, photoURL)
           .then(() => {
-            alert("Profile info updated");
-            return navigate("/");
+            user.displayName = name;
+            user.photoURL = photoURL;
+            navigate("/");
           })
           .catch(() => {
-            console.log("Profile couldn't be updated. Please try again.");
+            setAuthLoading(false);
+            // toast.warn("Failed to create profile, please try again.");
           });
       })
       .catch((error) => {
+        setAuthLoading(false);
         catchError(error);
       });
   };
   const handleSignUp = (provider) => {
     provider()
       .then(() => {
-        alert("sign up successful");
-        return navigate("/");
+        toast.success("Registered successfully.");
+        navigate("/");
       })
       .catch((error) => {
+        setAuthLoading(false);
         catchError(error);
       });
   };
+  if (authLoading)
+    return (
+      <div className="flex min-h-[calc(100dvh-389px)] justify-center items-center">
+        <Spinner />
+      </div>
+    );
+  if (user) return <Navigate to="/" />;
   return (
     <section className="grid text-center items-center p-8">
       <div>
