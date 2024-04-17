@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import Spinner from "../../components/shared/Spinner";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const {
@@ -57,6 +58,9 @@ const Login = () => {
     return <Navigate to={location.state ? location.state : "/profile"} />;
   return (
     <section className="grid text-center items-center p-8">
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <div>
         <Typography variant="h3" color="blue-gray" className="mb-2">
           Log In

@@ -1,9 +1,13 @@
 import { Typography, Button } from "@material-tailwind/react";
 import { FlagIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 const Error = () => {
   return (
     <div className="h-screen mx-auto grid place-items-center text-center px-8">
+      <Helmet>
+        <title>Error-404!</title>
+      </Helmet>
       <div>
         <FlagIcon className="w-20 h-20 mx-auto" />
         <Typography

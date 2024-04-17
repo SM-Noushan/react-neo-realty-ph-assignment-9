@@ -4,11 +4,15 @@ import { Link } from "react-router-dom";
 import useData from "../../hooks/useData";
 import Spinner from "../../components/shared/Spinner";
 import PropTypes from "prop-types";
+import { Helmet } from "react-helmet-async";
 
-const Properties = ({ item = 6 }) => {
+const Properties = ({ item = 6, title = "Properties" }) => {
   const { data, dataLoading } = useData();
   return (
     <section className="container mx-auto py-16 px-8 text-center space-y-6">
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <Typography variant="h3">Properties</Typography>
       {dataLoading ? (
         <Spinner />
@@ -21,7 +25,7 @@ const Properties = ({ item = 6 }) => {
       )}
 
       {item == 3 && (
-        <Link to="/properties">
+        <Link to="/resources/properties">
           <Button
             variant="outlined"
             ripple={true}
@@ -36,5 +40,6 @@ const Properties = ({ item = 6 }) => {
 };
 Properties.propTypes = {
   item: PropTypes.number,
+  title: PropTypes.string,
 };
 export default Properties;

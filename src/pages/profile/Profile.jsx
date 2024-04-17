@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 const Profile = () => {
   const { user, setAuthLoading, updateProfileInfo } = useAuth();
   const [editProfile, setEditProfile] = useState(false);
@@ -33,12 +34,15 @@ const Profile = () => {
       });
   };
   return (
-    <section className="my-8 flex justify-center items-center gap-52">
+    <section className="my-8 flex flex-col md:flex-row justify-center items-center gap-12 lg:gap-52">
+      <Helmet>
+        <title>Profile</title>
+      </Helmet>
       <div>
-        <Card className="w-96">
+        <Card className="md:w-96">
           <CardHeader
             floated={false}
-            className="h-80 shadow-none flex justify-center *:rounded-full"
+            className="shadow-none flex justify-center *:rounded-full"
           >
             <img
               src={
@@ -46,6 +50,7 @@ const Profile = () => {
                 "https://th.bing.com/th/id/OIP.vvmpWt0qBu3LeBgZuUfmGAHaFt?rs=1&pid=ImgDetMain"
               }
               alt="profile-picture"
+              className="size-64"
             />
           </CardHeader>
           <CardBody className="text-center">
@@ -156,7 +161,7 @@ const Profile = () => {
                 {...register("photoURL", {
                   required: true,
                   pattern:
-                    /^(http|https):\/\/[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}(\/[a-zA-Z0-9.\-=&?_+]*)*$/i,
+                    /^(http|https):\/\/[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}(\/[a-zA-Z0-9.\-=&?%_+,]*)*$/i,
                 })}
               />
 

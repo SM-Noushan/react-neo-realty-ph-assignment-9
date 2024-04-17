@@ -1,9 +1,13 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { Button, Input, Textarea, Typography } from "@material-tailwind/react";
+import { Helmet } from "react-helmet-async";
 
 const Contact = () => {
   return (
     <section className="px-8 py-8 lg:py-16">
+      <Helmet>
+        <title>Contact</title>
+      </Helmet>
       <div className="container mx-auto text-center">
         <Typography
           variant="h5"

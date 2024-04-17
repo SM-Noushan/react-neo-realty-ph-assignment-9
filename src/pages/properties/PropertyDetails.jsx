@@ -3,6 +3,7 @@ import Spinner from "../../components/shared/Spinner";
 import { IconButton, Tooltip, Typography } from "@material-tailwind/react";
 import { deleteData, getData, saveData } from "../../utils/localStorage";
 import { useEffect, useState } from "react";
+import useAuth from "../../hooks/useAuth";
 
 function CheckIcon() {
   return (
@@ -24,6 +25,7 @@ function CheckIcon() {
 }
 
 const PropertyDetails = () => {
+  const { user } = useAuth();
   const [bookmarkState, setBookmarkState] = useState(null);
   const navigation = useNavigation();
   const data = useLoaderData();
@@ -40,18 +42,18 @@ const PropertyDetails = () => {
     location,
     facilities,
   } = property;
-  const bookmarkData = getData();
+  const bookmarkData = getData(user.email);
   useEffect(() => {
     const i = bookmarkData.find((d) => d.id.toLowerCase() == id.toLowerCase());
     if (i) setBookmarkState(true);
     else setBookmarkState(false);
   }, []);
   const handleBookmark = () => {
-    saveData(property);
+    saveData(property, user.email);
     setBookmarkState(true);
   };
   const handleRemove = () => {
-    deleteData(id);
+    deleteData(id, user.email);
     setBookmarkState(false);
   };
   if (navigation.state === "loading") return <Spinner />;
@@ -61,7 +63,7 @@ const PropertyDetails = () => {
         <img
           src={image}
           alt="property image"
-          className="mb-4 h-[28rem] w-full rounded-xl object-cover"
+          className="mb-4 md:h-[28rem] w-full rounded-xl object-cover"
         />
         <Typography
           variant="lead"

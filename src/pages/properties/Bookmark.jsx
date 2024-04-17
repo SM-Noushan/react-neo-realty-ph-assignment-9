@@ -1,13 +1,19 @@
 import { Alert, Typography } from "@material-tailwind/react";
 import PropertiesCard from "../../components/PropertiesCard";
 import { getData } from "../../utils/localStorage";
+import { Helmet } from "react-helmet-async";
+import useAuth from "../../hooks/useAuth";
 const Bookmark = () => {
-  const data = getData();
+  const { user } = useAuth();
+  const data = getData(user.email);
   return (
     <section className="container mx-auto py-16 px-8 text-center space-y-6">
-      <Typography variant="h3">Bookmark</Typography>
+      <Helmet>
+        <title>Bookmarks</title>
+      </Helmet>
+      <Typography variant="h3">Bookmarks</Typography>
       {data.length == 0 ? (
-        <Alert className="justify-center py-12 text-lg">
+        <Alert className="justify-center py-12 text-lg *:mr-0">
           You have not added anything to wishlist yet.
         </Alert>
       ) : (

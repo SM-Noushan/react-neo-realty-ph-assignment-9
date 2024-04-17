@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import Spinner from "../../components/shared/Spinner";
+import { Helmet } from "react-helmet-async";
 
 const catchError = (error) => {
   const errorCode = error.code;
@@ -69,6 +70,9 @@ const Register = () => {
   if (user) return <Navigate to="/" />;
   return (
     <section className="grid text-center items-center p-8">
+      <Helmet>
+        <title>Register</title>
+      </Helmet>
       <div>
         <Typography variant="h3" color="blue-gray" className="mb-2">
           Register
@@ -197,7 +201,7 @@ const Register = () => {
               {...register("photoURL", {
                 required: true,
                 pattern:
-                  /^(http|https):\/\/[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}(\/[a-zA-Z0-9.\-=&?_+]*)*$/i,
+                  /^(http|https):\/\/[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}(\/[a-zA-Z0-9.\-=&?%_+,]*)*$/i,
               })}
             />
 

@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/properties",
+        path: "/resources/properties",
         element: <Properties />,
       },
       {
@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
         loader: () => fetch("/data/properties.json"),
       },
       {
-        path: "/bookmarks",
+        path: "/resources/bookmarks",
         element: (
           <ProtectedRoutes>
             <Bookmark />

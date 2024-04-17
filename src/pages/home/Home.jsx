@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div>
       <BannerHome />
-      <Properties item={3} />
+      <Properties title="Neo Realty" item={3} />
     </div>
   );
 };

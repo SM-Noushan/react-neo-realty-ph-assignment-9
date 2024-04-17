@@ -18,17 +18,17 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import {
-  Bars4Icon,
-  GlobeAmericasIcon,
-  NewspaperIcon,
-  PhoneIcon,
-  RectangleGroupIcon,
+  // Bars4Icon,
+  // GlobeAmericasIcon,
+  // NewspaperIcon,
+  // PhoneIcon,
+  // RectangleGroupIcon,
   SquaresPlusIcon,
-  SunIcon,
-  TagIcon,
+  // SunIcon,
+  // TagIcon,
   BookmarkSquareIcon,
 } from "@heroicons/react/24/solid";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import SkeletonNavProfile from "../skeleton/SkeletonNavProfile";
 import { toast } from "react-toastify";
@@ -38,38 +38,38 @@ const navListMenuItems = [
     title: "Properties",
     description: "Find the perfect property for your needs.",
     icon: SquaresPlusIcon,
-    to: "/properties",
+    to: "/resources/properties",
   },
   {
     title: "Bookmarks",
     description: "Meet and learn about our dedication",
     icon: BookmarkSquareIcon,
-    to: "/bookmarks",
+    to: "/resources/bookmarks",
   },
-  {
-    title: "Blog",
-    description: "Find the perfect solution for your needs.",
-    icon: Bars4Icon,
-    to: "/error",
-  },
-  {
-    title: "Services",
-    description: "Learn how we can help you achieve your goals.",
-    icon: SunIcon,
-    to: "/error",
-  },
-  {
-    title: "Support",
-    description: "Reach out to us for assistance or inquiries",
-    icon: GlobeAmericasIcon,
-    to: "/error",
-  },
-  {
-    title: "Contact",
-    description: "Find the perfect solution for your needs.",
-    icon: PhoneIcon,
-    to: "/contact-us",
-  },
+  // {
+  //   title: "Blog",
+  //   description: "Find the perfect solution for your needs.",
+  //   icon: Bars4Icon,
+  //   to: "/error",
+  // },
+  // {
+  //   title: "Services",
+  //   description: "Learn how we can help you achieve your goals.",
+  //   icon: SunIcon,
+  //   to: "/error",
+  // },
+  // {
+  //   title: "Support",
+  //   description: "Reach out to us for assistance or inquiries",
+  //   icon: GlobeAmericasIcon,
+  //   to: "/error",
+  // },
+  // {
+  //   title: "Contact",
+  //   description: "Find the perfect solution for your needs.",
+  //   icon: PhoneIcon,
+  //   to: "/contact-us",
+  // },
   // {
   //   title: "News",
   //   description: "Read insightful articles, tips, and expert opinions.",
@@ -90,10 +90,10 @@ const navListMenuItems = [
   // },
 ];
 
-function NavListMenu({ state = false }) {
+function NavListMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-  console.log(state);
+  const location = useLocation();
   const renderItems = navListMenuItems.map(
     ({ icon, title, description, to }, key) => (
       <NavLink
@@ -142,7 +142,11 @@ function NavListMenu({ state = false }) {
         <MenuHandler>
           <Typography as="div" variant="small" className="font-medium">
             <div
-              className="flex items-center gap-2 py-1.5 px-2.5 font-medium text-gray-900"
+              className={
+                location.pathname.toLowerCase().includes("resources")
+                  ? "flex items-center gap-2 py-1.5 px-3 font-medium rounded-md text-white bg-gray-900"
+                  : "flex items-center gap-2 py-1.5 px-3 font-medium text-gray-900 rounded-md"
+              }
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
@@ -366,9 +370,18 @@ const NavBar = () => {
       <Collapse open={openNav}>
         <NavList />
         <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
-          <Button variant="outlined" size="sm" color="blue-gray" fullWidth>
-            Log In
-          </Button>
+          {!authLoading && !user && (
+            <Button variant="outlined" size="sm" color="blue-gray" fullWidth>
+              Log In
+            </Button>
+          )}
+          {!authLoading && user && (
+            <Link to="/profile" className="w-full">
+              <Button variant="outlined" size="sm" color="blue-gray" fullWidth>
+                Profile
+              </Button>
+            </Link>
+          )}
         </div>
       </Collapse>
     </Navbar>
