@@ -6,6 +6,7 @@ import Error from "../pages/error/Error";
 import Register from "../pages/register/Register";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Profile from "../pages/profile/Profile";
+import Contact from "../pages/contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,7 @@ export const router = createBrowserRouter([
           </ProtectedRoutes>
         ),
       },
+      
     ],
   },
 ]);
