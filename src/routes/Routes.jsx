@@ -7,6 +7,7 @@ import Register from "../pages/register/Register";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Profile from "../pages/profile/Profile";
 import Contact from "../pages/contact/Contact";
+import Properties from "../pages/properties/Properties";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
             <Profile />
           </ProtectedRoutes>
         ),
+      },
+      {
+        path: "/properties",
+        element: <Properties />,
       },
       {
         path: "/contact-us",

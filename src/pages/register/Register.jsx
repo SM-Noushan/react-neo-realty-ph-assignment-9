@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Typography, Input, Button, Spinner } from "@material-tailwind/react";
+import { Typography, Input, Button } from "@material-tailwind/react";
 import { EyeSlashIcon, EyeIcon } from "@heroicons/react/24/solid";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
+import Spinner from "../../components/shared/Spinner";
 
 const catchError = (error) => {
   const errorCode = error.code;
@@ -64,12 +65,7 @@ const Register = () => {
         catchError(error);
       });
   };
-  if (authLoading)
-    return (
-      <div className="flex min-h-[calc(100dvh-389px)] justify-center items-center">
-        <Spinner />
-      </div>
-    );
+  if (authLoading) return <Spinner />;
   if (user) return <Navigate to="/" />;
   return (
     <section className="grid text-center items-center p-8">

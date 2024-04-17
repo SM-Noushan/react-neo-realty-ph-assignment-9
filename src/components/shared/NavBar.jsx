@@ -29,8 +29,8 @@ import {
   UserGroupIcon,
 } from "@heroicons/react/24/solid";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
-import SkeletonNavProfile from "./skeleton/SkeletonNavProfile";
+import useAuth from "../../hooks/useAuth";
+import SkeletonNavProfile from "../skeleton/SkeletonNavProfile";
 import { toast } from "react-toastify";
 
 const navListMenuItems = [
@@ -38,7 +38,7 @@ const navListMenuItems = [
     title: "Properties",
     description: "Find the perfect property for your needs.",
     icon: SquaresPlusIcon,
-    to: "",
+    to: "/properties",
   },
   {
     title: "About Us",
@@ -68,7 +68,7 @@ const navListMenuItems = [
     title: "Contact",
     description: "Find the perfect solution for your needs.",
     icon: PhoneIcon,
-    to: "",
+    to: "/contact-us",
   },
   {
     title: "News",
