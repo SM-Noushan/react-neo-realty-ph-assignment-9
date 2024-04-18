@@ -27,7 +27,7 @@ const PropertiesCard = ({ property }) => {
           <Tooltip content={segment_name}>{estate_title}</Tooltip>
         </Typography>
         <Typography variant="lead" color="gray" className="mt-3 font-normal">
-          {description.slice(0, 50)} ...
+          {description.slice(0, 40)} ...
         </Typography>
       </CardBody>
       <CardFooter className="flex items-center justify-center *:w-full">

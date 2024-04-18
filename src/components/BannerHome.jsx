@@ -1,8 +1,5 @@
 import { Button, Typography, Input } from "@material-tailwind/react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/bundle";
-import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
 
 const BannerHome = () => {
@@ -21,13 +18,12 @@ const BannerHome = () => {
               color="blue-gray"
               className="mx-auto my-6 w-full leading-snug !text-base lg:max-w-3xl lg:!text-2xl"
             >
-              Welcome to our state-of-the-art real estate platform! As the
-              digital landscape evolves, we are committed to{" "}
-              <span className="text-green-500 leading-snug ">reshaping</span>{" "}
-              the way you experience property buying and selling. Explore these
-              exciting{" "}
-              <span className="leading-snug text-green-500">innovations</span>{" "}
-              that redefine the real estate journey.
+              Unlock Your Dream Home at Neo Estate - Where Luxury Meets
+              <span className="text-green-500 leading-snug ">Comfort</span>.
+              Explore our curated selection of premium properties and embark on
+              a journey to find the home of your dreams. With Neo Estate, your
+              next chapter begins in{" "}
+              <span className="text-green-500 leading-snug ">style</span>.
             </Typography>
             <Typography
               variant="lead"
