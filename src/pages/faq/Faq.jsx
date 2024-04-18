@@ -1,4 +1,5 @@
 import { Typography } from "@material-tailwind/react";
+import { Helmet } from "react-helmet-async";
 
 const faqs = [
   {
@@ -29,6 +30,9 @@ const faqs = [
 export function Faq() {
   return (
     <section className="px-8 py-20">
+      <Helmet>
+        <title>FAQ</title>
+      </Helmet>
       <div className="container mx-auto">
         <div className="mb-14 text-center ">
           <Typography
