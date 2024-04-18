@@ -13,7 +13,9 @@ const Properties = ({ item = 6, title = "Properties" }) => {
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      <Typography variant="h3">Properties</Typography>
+      <Typography variant="h3">
+        {title == "Properties" ? "Properties" : "Featured Properties"}
+      </Typography>
       {dataLoading ? (
         <Spinner />
       ) : (

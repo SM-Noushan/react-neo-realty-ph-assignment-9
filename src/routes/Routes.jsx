@@ -11,6 +11,7 @@ import Properties from "../pages/properties/Properties";
 import PropertyDetails from "../pages/properties/PropertyDetails";
 import Bookmark from "../pages/properties/Bookmark";
 import Team from "../pages/team/Team";
+import Faq from "../pages/faq/Faq";
 
 export const router = createBrowserRouter([
   {
@@ -66,6 +67,10 @@ export const router = createBrowserRouter([
       {
         path: "/resources/our-team",
         element: <Team />,
+      },
+      {
+        path: "/resources/faq",
+        element: <Faq />,
       },
     ],
   },

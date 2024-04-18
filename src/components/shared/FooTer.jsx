@@ -1,5 +1,27 @@
 import { Typography } from "@material-tailwind/react";
-const links = ["Company", "About Us", "Team", "Properties", "Blog", "Pricing"];
+import { Link } from "react-router-dom";
+const links = [
+  {
+    title: "Company",
+    to: "",
+  },
+  {
+    title: "Properties",
+    to: "/resources/properties",
+  },
+  {
+    title: "Team",
+    to: "/resources/our-team",
+  },
+  {
+    title: "Blog",
+    to: "",
+  },
+  {
+    title: "FAQ",
+    to: "/resources/faq",
+  },
+];
 const currentYear = new Date().getFullYear();
 
 const FooTer = () => {
@@ -10,14 +32,14 @@ const FooTer = () => {
           {links.map((link, index) => (
             <ul key={index}>
               <li>
-                <Typography
-                  as="a"
-                  href="#"
-                  color="white"
-                  className="font-medium !text-gray-500 transition-colors hover:!text-gray-900"
-                >
-                  {link}
-                </Typography>
+                <Link to={link.to}>
+                  <Typography
+                    color="white"
+                    className="font-medium !text-gray-500 transition-colors hover:!text-gray-900"
+                  >
+                    {link.title}
+                  </Typography>
+                </Link>
               </li>
             </ul>
           ))}

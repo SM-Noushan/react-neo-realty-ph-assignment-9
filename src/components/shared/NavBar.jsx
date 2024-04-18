@@ -26,6 +26,7 @@ import {
   SquaresPlusIcon,
   // SunIcon,
   // TagIcon,
+  QuestionMarkCircleIcon,
   UserGroupIcon,
   BookmarkSquareIcon,
 } from "@heroicons/react/24/solid";
@@ -53,6 +54,12 @@ const navListMenuItems = [
     icon: UserGroupIcon,
     to: "/resources/our-team",
   },
+  {
+    title: "FAQ",
+    description: "Frequently asked questions",
+    icon: QuestionMarkCircleIcon,
+    to: "/resources/faq",
+  },
   // {
   //   title: "Blog",
   //   description: "Find the perfect solution for your needs.",
@@ -70,12 +77,6 @@ const navListMenuItems = [
   //   description: "Reach out to us for assistance or inquiries",
   //   icon: GlobeAmericasIcon,
   //   to: "/error",
-  // },
-  // {
-  //   title: "Contact",
-  //   description: "Find the perfect solution for your needs.",
-  //   icon: PhoneIcon,
-  //   to: "/contact-us",
   // },
   // {
   //   title: "News",
