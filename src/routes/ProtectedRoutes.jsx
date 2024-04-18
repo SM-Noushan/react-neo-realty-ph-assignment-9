@@ -7,7 +7,6 @@ const ProtectedRoutes = ({ children }) => {
   const location = useLocation();
   if (authLoading) return <Spinner />;
   if (user) return children;
-  console.log(location);
   return <Navigate state={location.pathname} to="/login"></Navigate>;
 };
 

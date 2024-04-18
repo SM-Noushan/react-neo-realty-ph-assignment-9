@@ -26,6 +26,7 @@ import {
   SquaresPlusIcon,
   // SunIcon,
   // TagIcon,
+  UserGroupIcon,
   BookmarkSquareIcon,
 } from "@heroicons/react/24/solid";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
@@ -45,6 +46,12 @@ const navListMenuItems = [
     description: "Meet and learn about our dedication",
     icon: BookmarkSquareIcon,
     to: "/resources/bookmarks",
+  },
+  {
+    title: "Our Team",
+    description: "Meet the team",
+    icon: UserGroupIcon,
+    to: "/resources/our-team",
   },
   // {
   //   title: "Blog",

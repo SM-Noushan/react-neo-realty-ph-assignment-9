@@ -10,6 +10,7 @@ import Contact from "../pages/contact/Contact";
 import Properties from "../pages/properties/Properties";
 import PropertyDetails from "../pages/properties/PropertyDetails";
 import Bookmark from "../pages/properties/Bookmark";
+import Team from "../pages/team/Team";
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
       {
         path: "/contact-us",
         element: <Contact />,
+      },
+      {
+        path: "/resources/our-team",
+        element: <Team />,
       },
     ],
   },

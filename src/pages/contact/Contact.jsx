@@ -40,18 +40,14 @@ const Contact = () => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
               <Marker position={[23.81, 90.411]}>
-                <Popup>
-                  A pretty CSS3 popup. <br /> Easily customizable.
-                </Popup>
+                <Popup>Neo Realty</Popup>
               </Marker>
             </MapContainer>
           </div>
-          {/* <img
-            src="/image/map.svg"
-            alt="map"
-            className="w-full h-full lg:max-h-[510px]"
-          /> */}
-          <form action="#" className="flex flex-col gap-4 lg:max-w-sm">
+          <form
+            action="#"
+            className="flex flex-col gap-4 lg:max-w-sm lg:mx-auto"
+          >
             <Typography
               variant="small"
               className="text-left !font-semibold !text-gray-600"
